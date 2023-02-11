@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/compiler.xml
+/encodings.xml
+/jarReposotories.xml
+/misc.xml
+*.DS_Store
+._*
