@@ -3,7 +3,9 @@
 /workspace.xml
 /compiler.xml
 /encodings.xml
-/jarReposotories.xml
+/jarRepositories.xml
 /misc.xml
+/vcs.xml
 *.DS_Store
 ._*
+.gitattributes
