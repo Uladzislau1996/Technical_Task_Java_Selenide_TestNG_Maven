@@ -6,6 +6,7 @@
 /jarRepositories.xml
 /misc.xml
 /vcs.xml
+/modules.xml
 *.DS_Store
 ._*
 .gitattributes
