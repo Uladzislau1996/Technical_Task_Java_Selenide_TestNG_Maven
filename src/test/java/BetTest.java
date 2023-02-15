@@ -5,6 +5,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Condition.disappear;
+
 public class BetTest {
 
     @BeforeMethod(description = "Open web site")
@@ -44,6 +46,7 @@ public class BetTest {
         MainPageSteps mainPageSteps = new MainPageSteps();
         mainPageSteps.stepClearButtonClick();
         mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
+        Assert.assertTrue(mainPageSteps.coupon.is(disappear), "Отображаетса ставка");
     }
 
     @Test(description = "Проверить что данные не отображаются после удаления ставки после клика по крестику")
@@ -51,6 +54,7 @@ public class BetTest {
         MainPageSteps mainPageSteps = new MainPageSteps();
         mainPageSteps.stepDeleteRateButtonClick();
         mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
+        Assert.assertTrue(mainPageSteps.coupon.is(disappear), "Отображаетса ставка");
     }
 
     @Test(description = "Проверить что данные не отображаются после повторноко клика по коэфиценту")
@@ -58,5 +62,6 @@ public class BetTest {
         MainPageSteps mainPageSteps = new MainPageSteps();
         mainPageSteps.stepClickCoefficient();
         mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
+        Assert.assertTrue(mainPageSteps.coupon.is(disappear), "Отображаетса ставка");
     }
 }

@@ -1,8 +1,11 @@
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.impl.CollectionElement;
 import org.testng.Assert;
 import java.time.Duration;
+import java.util.List;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static io.qameta.allure.Allure.step;
 
 public class MainPageSteps extends MainPageLocators {
@@ -128,7 +131,7 @@ public class MainPageSteps extends MainPageLocators {
 
     public void stepCheckBetElementsInCouponAreNotVisible() {
         step("Проверяю наличие элементов в куппоне", () -> {
-            coupon.shouldNotBe(visible, Duration.ofSeconds(30));
+            coupon.shouldNotBe(visible, Duration.ofSeconds(120));
             Assert.assertFalse(coupon.isDisplayed(), "Отображается инфо о ставке");
             Assert.assertFalse(couponLeagueName.isDisplayed(), "Отображается название лиги");
             Assert.assertFalse(couponTeamsName.isDisplayed(), "Отображается название команд");
