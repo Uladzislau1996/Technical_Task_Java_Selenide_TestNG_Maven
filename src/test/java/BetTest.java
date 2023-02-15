@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -14,8 +15,10 @@ public class BetTest {
         Configuration.browserSize = "3600x3600";
         Selenide.open("https://22bet.co.ke/ru");
         MainPageSteps mainPageSteps = new MainPageSteps();
-        mainPageSteps.acceptCookie.click();
-        mainPageSteps.betCoefficients1.click();
+        mainPageSteps.stepAcceptCookie();
+        mainPageSteps.stepScrollToEvent();
+        Assert.assertTrue(mainPageSteps.coefficient.isDisplayed(), "Не отображается коэффицент");
+        mainPageSteps.stepClickCoefficient();
     }
 
     @AfterMethod(description = "Clear cache and close browser")
@@ -25,37 +28,35 @@ public class BetTest {
     }
 
     @Test(description = "Проверить данные в купоне после клика по коэффиценту")
-    public void betAppearsInTheCouponTest(){
+    public void betAppearsInCouponTest(){
        MainPageSteps mainPageSteps = new MainPageSteps();
        mainPageSteps.stepCheckBetElementsInCouponAreVisible();
        mainPageSteps.stepCheckDropDownMenu();
-       mainPageSteps.stepCheckLeagueNameNameInCoupon();
-       mainPageSteps.stepCheckTeamsNameInCoupon();
-       mainPageSteps.stepCheckCoefficientInCoupon();
-       mainPageSteps.stepCheckTypeOfCoefficientInCoupon();
+       Assert.assertTrue(mainPageSteps.stepCheckLeagueNameInCoupon(), "Не корректное название лиги в купоне");
+       Assert.assertTrue(mainPageSteps.stepCheckTeamsNameInCoupon(), "Не корректное название команд в купоне");
+       Assert.assertTrue(mainPageSteps.stepCheckCoefficientInCoupon(), "Не корректный коэффицент в купоне");
+       Assert.assertTrue(mainPageSteps.stepCheckCoefficientTypeInCoupon(),
+               "Не корректный тип коэффицента в купоне");
     }
 
     @Test(description = "Проверить что данные не отображаются после удаления ставки после клика по кнопке очистить")
-    public void betDisappearsInTheCouponAfterDeletionAllRatesTest(){
+    public void betDisappearsAfterClickClearButtonTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
-        mainPageSteps.betInfoDeleteRatesButton.click();
+        mainPageSteps.stepClearButtonClick();
         mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
     }
 
     @Test(description = "Проверить что данные не отображаются после удаления ставки после клика по крестику")
-    public void betDisappearsInTheCouponAfterDeletionAllRateTest(){
+    public void betDisappearsAfterClickDeleteRateTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
-        mainPageSteps.betInfoDeleteRateButton.click();
+        mainPageSteps.stepDeleteRateButtonClick();
         mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
     }
 
     @Test(description = "Проверить что данные не отображаются после повторноко клика по коэфиценту")
-    public void betDisappearsInTheCouponAfterClickOnCoefficientTest(){
+    public void betDisappearsAfterClickOnCoefficientTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
-        mainPageSteps.betCoefficients1.click();
+        mainPageSteps.stepClickCoefficient();
         mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
     }
-
-
-
 }
