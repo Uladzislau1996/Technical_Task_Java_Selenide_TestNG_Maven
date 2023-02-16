@@ -44,22 +44,23 @@ public class BetTest {
     @Test(description = "Проверить что данные не отображаются после удаления ставки после клика по кнопке очистить")
     public void betDisappearsAfterClickClearButtonTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
+        betAppearsInCouponTest();
         mainPageSteps.stepClearButtonClick();
-        mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
         Assert.assertTrue(mainPageSteps.coupon.is(disappear), "Отображаетса ставка");
     }
 
     @Test(description = "Проверить что данные не отображаются после удаления ставки после клика по крестику")
     public void betDisappearsAfterClickDeleteRateTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
+        betAppearsInCouponTest();
         mainPageSteps.stepDeleteRateButtonClick();
-        mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
         Assert.assertTrue(mainPageSteps.coupon.is(disappear), "Отображаетса ставка");
     }
 
     @Test(description = "Проверить что данные не отображаются после повторноко клика по коэфиценту")
     public void betDisappearsAfterClickOnCoefficientTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
+        betAppearsInCouponTest();
         mainPageSteps.stepClickCoefficient();
         Assert.assertFalse(mainPageSteps.stepCheckBetElementsInCouponAreNotVisible(), "Отображаетса ставка");
     }
