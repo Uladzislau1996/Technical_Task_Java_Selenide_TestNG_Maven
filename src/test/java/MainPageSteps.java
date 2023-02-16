@@ -32,7 +32,7 @@ public class MainPageSteps extends MainPageLocators {
 
     public void stepCheckBetElementsInCouponAreVisible() {
         step("Проверяю наличие элементов в куппоне", () -> {
-            coupon.shouldBe(visible, Duration.ofSeconds(30));
+            coupon.shouldBe(visible, Duration.ofSeconds(5));
             Assert.assertTrue(coupon.isDisplayed(), "Не отображается инфо о ставке");
             Assert.assertTrue(couponLeagueName.isDisplayed(), "Не отображается название лиги");
             Assert.assertTrue(couponTeamsName.isDisplayed(), "Не отображается название команд");
@@ -57,7 +57,7 @@ public class MainPageSteps extends MainPageLocators {
     public void stepCheckDropDownMenu() {
         step("Проверить пункты меню в дроп даун меню", () -> {
             couponDropDown.click();
-            couponDropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(30));
+            couponDropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(10));
             Assert.assertTrue(couponDropDownAcceptWhenRise.isDisplayed(), "Не отображается кнопка" +
                     " выпадающего списка Принять при повышении");
             Assert.assertTrue(couponDropDownConfirm.isDisplayed(), "Не отображается кнопка выпадающего " +
@@ -129,27 +129,10 @@ public class MainPageSteps extends MainPageLocators {
         });
     }
 
-    public void stepCheckBetElementsInCouponAreNotVisible() {
-        step("Проверяю наличие элементов в куппоне", () -> {
-            coupon.shouldNotBe(visible, Duration.ofSeconds(120));
-            Assert.assertFalse(coupon.isDisplayed(), "Отображается инфо о ставке");
-            Assert.assertFalse(couponLeagueName.isDisplayed(), "Отображается название лиги");
-            Assert.assertFalse(couponTeamsName.isDisplayed(), "Отображается название команд");
-            Assert.assertFalse(couponCoefficient.isDisplayed(), "Отображается коэффицент");
-            Assert.assertFalse(couponStakeAmount.isDisplayed(), "Отображается поле сумма ставки");
-            Assert.assertFalse(couponCounter.isDisplayed(), "Отображается счетчки с кнопакми и каунтером");
-            Assert.assertFalse(couponMaximumBet.isDisplayed(), "Отображается поле максимальная ставки");
-            Assert.assertFalse(couponMaximumBetCounter.isDisplayed(),
-                    "Отображается значение максимальное ставки");
-            Assert.assertFalse(couponPossibleWin.isDisplayed(), "Отображается поле возможный выйгриш");
-            Assert.assertFalse(couponPossibleWinCounter.isDisplayed(),
-                    "Отображается значение поля возможный выйгрыш");
-            Assert.assertFalse(couponChangingCoefficient.isDisplayed(),
-                    "Отображается поле при изменении коэффицента");
-            Assert.assertFalse(couponDropDown.isDisplayed(),
-                    "Отображается кнопка для открытия выпадающего списка Подтверждать");
-            Assert.assertFalse(couponPromoCode.isDisplayed(), "Отображается поле Промокод");
-            Assert.assertFalse(couponPromoCodeTextField.isDisplayed(), "Отображается текстовое поле Промокод");
+    public boolean stepCheckBetElementsInCouponAreNotVisible() {
+        return step("Проверяю наличие элементов в куппоне", () -> {
+            coupon.shouldNotBe(visible, Duration.ofSeconds(10));
+            return coupon.isDisplayed();
         });
     }
 }

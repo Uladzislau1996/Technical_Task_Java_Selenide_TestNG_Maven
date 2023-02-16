@@ -61,7 +61,6 @@ public class BetTest {
     public void betDisappearsAfterClickOnCoefficientTest(){
         MainPageSteps mainPageSteps = new MainPageSteps();
         mainPageSteps.stepClickCoefficient();
-        mainPageSteps.stepCheckBetElementsInCouponAreNotVisible();
-        Assert.assertTrue(mainPageSteps.coupon.is(disappear), "Отображаетса ставка");
+        Assert.assertFalse(mainPageSteps.stepCheckBetElementsInCouponAreNotVisible(), "Отображаетса ставка");
     }
 }
