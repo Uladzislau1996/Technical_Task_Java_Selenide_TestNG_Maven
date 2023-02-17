@@ -1,4 +1,4 @@
-package config;
+package ru.test.bet.config;
 
 import com.codeborne.selenide.Configuration;
 

@@ -1,29 +1,34 @@
 package ru.test.bet;
 
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import ru.test.bet.pages.MainPageSteps;
 
 import static com.codeborne.selenide.Selenide.clearBrowserCookies;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static config.SelenideConfig.config;
-import static org.testng.Assert.assertTrue;
+import static ru.test.bet.config.SelenideConfig.config;
 
 public class BaseTest {
 
     MainPageSteps mainPageSteps;
 
-    @BeforeMethod(description = "Open web site")
-    public void setUp() {
+    @BeforeClass(description = "Применить конфигурации")
+    public void setUp(){
         config();
+    }
+
+    @BeforeMethod(description = "Выбрать событие и коэффициент")
+    public void chooseCoefficient() {
         mainPageSteps = MainPageSteps.openPage();
         mainPageSteps.acceptCookie();
-        mainPageSteps.isEventVisible();
+        mainPageSteps.checkEventIsVisible();
         mainPageSteps.scrollEvent();
-        mainPageSteps.isCoefficientVisible();
+        mainPageSteps.checkCoefficientVisible();
         mainPageSteps.clickCoefficient();
     }
 
-    @AfterMethod(description = "Clear cache and close browser")
+    @AfterMethod(description = "Очистить кэш и куки")
     public void tearDown(){
         clearBrowserCookies();
         closeWebDriver();
