@@ -112,8 +112,8 @@ public class MainPageSteps extends MainPageLocators {
     }
 
     public void checkCoefficientVisible() {
-        step("Проверка, что коэфицента отображается в событии", () -> {
-            coefficient.shouldBe(visible, Duration.ofSeconds(SECONDS));
+        step("Проверка, что коэфицент отображается в событии", () -> {
+            checkElementVisible(coefficient);
         });
     }
 
