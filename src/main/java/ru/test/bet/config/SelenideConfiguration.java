@@ -2,7 +2,7 @@ package ru.test.bet.config;
 
 import com.codeborne.selenide.Configuration;
 
-public class SelenideConfig {
+public class SelenideConfiguration {
 
     public static final String SIZE = "3600x3600";
     public static final String BASE_URL = "https://22bet.co.ke/ru";

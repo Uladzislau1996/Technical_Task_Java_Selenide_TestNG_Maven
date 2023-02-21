@@ -7,7 +7,7 @@ import ru.test.bet.pages.MainPageSteps;
 
 import static com.codeborne.selenide.Selenide.clearBrowserCookies;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static ru.test.bet.config.SelenideConfig.config;
+import static ru.test.bet.config.SelenideConfiguration.config;
 
 public class BaseTest {
 

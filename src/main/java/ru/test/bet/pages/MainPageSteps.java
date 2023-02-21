@@ -1,7 +1,6 @@
 package ru.test.bet.pages;
 
 import com.codeborne.selenide.SelenideElement;
-
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
