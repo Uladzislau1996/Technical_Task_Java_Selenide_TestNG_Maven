@@ -6,8 +6,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainPageLocators {
-    SelenideElement blockLine = $x("//*[@class='line-dashboard']/div/div[1]");
-    SelenideElement blockLineTeamsName = blockLine.$x("div[2]/div/a");
+    protected SelenideElement blockLine = $x("//*[@class='line-dashboard']/div/div[1]");
+    protected SelenideElement blockLineTeamsName = blockLine.$x("div[2]/div/a");
     protected SelenideElement leagueName = blockLine.$x("div[1]/div[3]");
     protected SelenideElement firstTeamsName = blockLineTeamsName.$x("span/span[1]");
     protected SelenideElement secondTeamsName = blockLineTeamsName.$x("span/span[2]");
