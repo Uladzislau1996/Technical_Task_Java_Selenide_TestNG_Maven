@@ -2,6 +2,7 @@
 ### Локаторы описывал и методы в классе MainPage.
 ### Для просмотра Allure отчета введите команду mvn allure:serve после выполнения теста
 ![Снимок экрана 2023-06-29 в 14 39 06](https://github.com/Uladzislau1996/Technical_Task_Java_Selenide_TestNG_Maven/assets/39631679/5063c9d0-13d4-4ccc-9aff-eed0554b875b)
+![Снимок экрана 2023-06-29 в 14 39 25](https://github.com/Uladzislau1996/Technical_Task_Java_Selenide_TestNG_Maven/assets/39631679/3cd8ec55-789f-4f31-9d7b-a20cbc8975ed)
 
 
 ### В конфиге:
