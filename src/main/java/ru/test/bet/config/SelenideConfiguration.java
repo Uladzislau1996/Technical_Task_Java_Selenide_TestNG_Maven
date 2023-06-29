@@ -1,18 +1,24 @@
 package ru.test.bet.config;
 
 import com.codeborne.selenide.Configuration;
+import ru.test.bet.configreader.ConfigReader;
 
 public class SelenideConfiguration {
 
-    public static final String SIZE = "3600x3600";
-    public static final String BASE_URL = "https://22bet.co.ke/ru";
-    public static final String BROWSER = "chrome";
+    private static final String BROWSER = ConfigReader.selenideConfig.browser();
+    private static final Boolean MANAGERENABLED = ConfigReader.selenideConfig.driverManagerEnabled();
+    private static final Boolean HEADLESS = ConfigReader.selenideConfig.headless();
+    private static final String BROWSERSIZE = ConfigReader.selenideConfig.size();
+    private static final String BASEURL = ConfigReader.selenideConfig.baseUrl();
+    private static final int TIMEOUT = ConfigReader.selenideConfig.timeout();
 
-    public static void config () {
+    public static void config() {
         Configuration.browser = BROWSER;
-        Configuration.driverManagerEnabled = true;
-        Configuration.headless = false;
-        Configuration.browserSize = SIZE;
-        Configuration.baseUrl = BASE_URL;
+        Configuration.driverManagerEnabled = MANAGERENABLED;
+        Configuration.headless = HEADLESS;
+        Configuration.browserSize = BROWSERSIZE;
+        Configuration.baseUrl = BASEURL;
+        Configuration.pageLoadTimeout = TIMEOUT;
     }
+
 }
